@@ -77,7 +77,8 @@ contract Airdrop is Ownable {
         for (uint64 i = 0; i < nRecipients; ++i) {
             uint256 amountToSend = (i_token.balanceOf(s_recipients[i]) *
                 supply) / totalSubscription;
-            i_token.transfer(s_recipients[i], amountToSend * i_scale);
+            if (amountToSend > 0)
+                i_token.transfer(s_recipients[i], amountToSend * i_scale);
         }
     }
 

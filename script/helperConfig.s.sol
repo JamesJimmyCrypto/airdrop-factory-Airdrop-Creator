@@ -25,6 +25,8 @@ contract HelperConfig is Script {
             activeNetworkConfig = getFujiEthConfig();
         } else if (block.chainid == 1287) {
             activeNetworkConfig = getMoonbaseEthConfig();
+        } else if (block.chainid == 11155111) {
+            activeNetworkConfig = getSepoliaEthConfig();
         } else {
             activeNetworkConfig = getOrCreateAnvilEthConfig();
         }
@@ -54,13 +56,24 @@ contract HelperConfig is Script {
 
     function getMoonbaseEthConfig() public view returns (NetworkConfig memory) {
         // token address
-        NetworkConfig memory fujiConfig = NetworkConfig({
+        NetworkConfig memory moonbaseConfig = NetworkConfig({
             tokenAddress: 0xbF452599F041330266f2C302604F9E0c6D980E92,
             airdropTime: uint128(block.timestamp) + 2 hours,
             registrationFee: 0.01 ether,
             treasury: 0xc096a34cFC2094D360373CC631eB28f353F4498e
         });
-        return fujiConfig;
+        return moonbaseConfig;
+    }
+
+    function getSepoliaEthConfig() public view returns (NetworkConfig memory) {
+        // token address
+        NetworkConfig memory sepoliaConfig = NetworkConfig({
+            tokenAddress: 0x867BfAD7b420c0eddE667dD92d06aE1efcd65f81,
+            airdropTime: uint128(block.timestamp) + 2 hours,
+            registrationFee: 0.01 ether,
+            treasury: 0xc096a34cFC2094D360373CC631eB28f353F4498e
+        });
+        return sepoliaConfig;
     }
 
     function getOrCreateAnvilEthConfig() public returns (NetworkConfig memory) {

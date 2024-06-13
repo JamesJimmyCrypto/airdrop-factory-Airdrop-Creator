@@ -48,6 +48,12 @@ contract Database is Ownable {
         return s_airdrops.length;
     }
 
+    function getAirdropTokenLogoUrl(
+        uint64 _index
+    ) external view returns (string memory) {
+        return s_airdrops[_index].logoUrl;
+    }
+
     function removeAirdrop() external {
         require(
             address(this).balance == 0,

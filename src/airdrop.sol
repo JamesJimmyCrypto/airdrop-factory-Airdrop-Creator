@@ -19,6 +19,8 @@ interface IERC20 {
 
     function decimals() external view returns (uint8);
 
+    function name() external view returns (string memory);
+
     function approve(address spender, uint256 amount) external returns (bool);
 }
 
@@ -99,6 +101,10 @@ contract Airdrop is Ownable {
 
     function getToken() external view returns (IERC20) {
         return i_token;
+    }
+
+    function getTokenName() external view returns (string memory) {
+        return i_token.name();
     }
 
     function getBalance() public view returns (uint256) {

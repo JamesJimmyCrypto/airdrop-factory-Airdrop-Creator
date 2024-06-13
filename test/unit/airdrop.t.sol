@@ -133,4 +133,8 @@ contract AirdropTest is BaseSetup {
     function testRegistrationFee() public {
         assertEq(airdrop.getRegistrationFee(), MINIMUM_FEE);
     }
+
+    function testTokenName() public {
+        assertEq(airdrop.getTokenName(), "DummyToken");
+    }
 }
